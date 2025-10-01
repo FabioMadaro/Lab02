@@ -1,6 +1,23 @@
 def carica_da_file(file_path):
     """Carica i libri dal file"""
     # TODO
+    biblioteca = []
+
+    file = open("australian_open.csv", "r")
+
+    for line in file:
+        line = line.rstrip()
+        campi = line.split(",")
+        Titolo = campi[0]
+        Autore = campi[0]
+        Anno = campi[0]
+        Pagine = campi[0]
+        Sezione = campi[0]
+        biblioteca.append(campi)
+
+    return(biblioteca)
+
+
 
 
 def aggiungi_libro(biblioteca, titolo, autore, anno, pagine, sezione, file_path):
