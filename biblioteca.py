@@ -9,8 +9,9 @@ def aggiungi_libro(biblioteca, titolo, autore, anno, pagine, sezione, file_path)
 
 
 def cerca_libro(biblioteca, titolo):
-    """Cerca un libro nella biblioteca dato il titolo"""
+    """Cerca un libro 1 nella biblioteca dato il titolo"""
     # TODO
+
 
 
 def elenco_libri_sezione_per_titolo(biblioteca, sezione):
