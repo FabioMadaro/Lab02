@@ -1,33 +1,69 @@
 def carica_da_file(file_path):
     """Carica i libri dal file"""
     # TODO
+
     biblioteca = []
 
-    file = open("australian_open.csv", "r")
+    try:
+        file = open(file_path, "r", encoding="utf-8")
+    except FileNotFoundError:
+        return None
+
+    righe = []
 
     for line in file:
         line = line.rstrip()
-        campi = line.split(",")
-        Titolo = campi[0]
-        Autore = campi[0]
-        Anno = campi[0]
-        Pagine = campi[0]
-        Sezione = campi[0]
+        if line != "":
+            righe.append(line)
+
+    file.close()
+
+    #num_sezioni = int(righe[0])
+    #for i in range(num_sezioni):
+    #    biblioteca.append([])
+
+    for riga in righe[1:]:
+        campi = riga.split(",")
+        #sezione = int(campi[-1])
+        #biblioteca[sezione-1].append(campi)
         biblioteca.append(campi)
 
-    return(biblioteca)
-
-
+    return biblioteca
 
 
 def aggiungi_libro(biblioteca, titolo, autore, anno, pagine, sezione, file_path):
     """Aggiunge un libro nella biblioteca"""
     # TODO
 
+    for libro in biblioteca:
+        if libro[0] == titolo:
+            return None
+
+    if int(sezione) <= 0:
+        return None
+
+    nuovo_libro = [titolo, autore, str(anno), str(pagine), str(sezione)]
+
+    try:
+        file = open(file_path, "a", encoding="utf-8")
+        file.write(",".join(nuovo_libro) + "\n")
+    except FileNotFoundError:
+        return None
+
+    biblioteca.append(nuovo_libro)
+
+    return nuovo_libro
+
 
 def cerca_libro(biblioteca, titolo):
     """Cerca un libro 1 nella biblioteca dato il titolo"""
     # TODO
+    def cerca_libro(biblioteca, titolo):
+        for libro in biblioteca:
+            if libro[0] == titolo:
+                return f"{libro[0]}, {libro[1]}, {libro[2]}, {libro[3]}, {libro[4]}"
+        # Se il libro non viene trovato
+        return None
 
 
 
