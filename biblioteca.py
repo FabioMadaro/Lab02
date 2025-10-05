@@ -18,7 +18,7 @@ def carica_da_file(file_path):
 
     file.close()
 
-    #num_sezioni = int(righe[0])
+    num_sezioni = int(righe[0])
     #for i in range(num_sezioni):
     #    biblioteca.append([])
 
@@ -58,18 +58,31 @@ def aggiungi_libro(biblioteca, titolo, autore, anno, pagine, sezione, file_path)
 def cerca_libro(biblioteca, titolo):
     """Cerca un libro 1 nella biblioteca dato il titolo"""
     # TODO
-    def cerca_libro(biblioteca, titolo):
-        for libro in biblioteca:
-            if libro[0] == titolo:
-                return f"{libro[0]}, {libro[1]}, {libro[2]}, {libro[3]}, {libro[4]}"
-        # Se il libro non viene trovato
-        return None
+    for libro in biblioteca:
+        if libro[0] == titolo:
+            return f"{libro[0]}, {libro[1]}, {libro[2]}, {libro[3]}, {libro[4]}"
+    # Se il libro non viene trovato
+    return None
 
 
 
 def elenco_libri_sezione_per_titolo(biblioteca, sezione):
     """Ordina i titoli di una data sezione della biblioteca in ordine alfabetico"""
     # TODO
+
+    sezione = str(sezione)
+    libri_sezione = []
+    for libro in biblioteca:
+        if libro[4] == sezione:
+            titolo = libro[0]
+            libri_sezione.append(titolo)
+
+    if len(libri_sezione) == 0:
+        return None
+
+    libri_sezione.sort()
+
+    return libri_sezione
 
 
 def main():
